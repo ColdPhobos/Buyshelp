@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Buyshelp.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +12,7 @@ namespace Buyshelp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new MakeShoppingListPage();
         }
 
         protected override void OnStart()

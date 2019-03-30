@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Buyshelp.Views.MakeShoppingListPage">
+    <StackLayout x:Name="MasterStackLayout"
+                 BackgroundColor="#6999e5">
+
+        <StackLayout x:Name="TitleStackLayout"
+                     BackgroundColor="#2763c4"
+                     VerticalOptions="Start">
+
+            <Label Text="Stwórz listę zakupów"
+                   TextColor="White"
+                   FontAttributes="Italic"
+                   FontSize="30"
+                   Margin="0,40,0,40"
+                   HorizontalOptions="Center"/>
+        </StackLayout >
+
+        <StackLayout Orientation="Horizontal"
+                     x:Name="EnterProductStackLayout"
+                     BackgroundColor="#5581c6"
+                     Margin="0,0,0,20"
+                     VerticalOptions="Start">
+
+            <Entry x:Name="EntryProduct"                
+                   Placeholder="Produkt"
+                   
+                   Margin="0,30,0,0"
+                   HorizontalOptions="FillAndExpand"/>
+
+            <Button x:Name="BtnAddProduct"
+                    Text="Dodaj"
+                    TextColor="White"
+                    BackgroundColor="#3b5691"
+                    CornerRadius="20"
+                    Margin="0,0,10,0"
+                    VerticalOptions="EndAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Clicked="BtnAddProduct_Clicked"/>
+
+
+        </StackLayout>
+
+        <StackLayout x:Name="ProductsStackLayout"                   
+                     HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="StartAndExpand" >
+
+            <ListView x:Name="ListViewProducts"
+                      HasUnevenRows="True"
+                      >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Button Text="{Binding  .}"
+                                    WidthRequest="200"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Clicked="Button_Clicked"
+                                    />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+            </ListView>
+
+        </StackLayout>
+
+        <StackLayout x:Name="SaveOrDeleteLayout">
+
+            <Button x:Name="BtnDelete"
+                    Text="Usuń"
+                    TextColor="White"
+                    BackgroundColor="#3b5691"
+                    CornerRadius="20"
+                    IsVisible="False"
+                    VerticalOptions="Start"
+                    Clicked="BtnDelete_Clicked"/>
+            
+            <Button x:Name="BtnZapisz"
+                    Text="Zapisz"
+                    TextColor="White"
+                    BackgroundColor="#3b5691"
+                    CornerRadius="20"
+                    VerticalOptions="StartAndExpand"/>
+
+        </StackLayout>
+
+        
+        
+    </StackLayout>
+    
+</ContentPage>
