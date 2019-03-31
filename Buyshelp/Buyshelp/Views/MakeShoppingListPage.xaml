@@ -76,12 +76,13 @@
                     VerticalOptions="Start"
                     Clicked="BtnDelete_Clicked"/>
             
-            <Button x:Name="BtnZapisz"
-                    Text="Zapisz"
+            <Button x:Name="BtnSaveList"
+                    Text="Zapisz listę zakupów"
                     TextColor="White"
                     BackgroundColor="#3b5691"
                     CornerRadius="20"
-                    VerticalOptions="StartAndExpand"/>
+                    VerticalOptions="StartAndExpand"
+                    Clicked="BtnSaveList_Clicked"/>
 
         </StackLayout>
 
