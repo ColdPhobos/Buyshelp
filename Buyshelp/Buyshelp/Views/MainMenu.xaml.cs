@@ -1,4 +1,5 @@
 ﻿using Buyshelp.Models;
+using Buyshelp.Strategy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,55 +14,21 @@ namespace Buyshelp.Views
     public partial class MainMenu : MasterDetailPage
     {
         public List<MainMenuItems> menuList { get; set; }
+        ICreateViews menuListCreator;
 
         public MainMenu()
         {
             InitializeComponent();
             menuList = new List<MainMenuItems>();
             // Adding menu items to menuList and you can define title ,page and icon  
-            menuList.Add(new MainMenuItems()
-            {
-                Title = "Strona główna",
-                Icon = "Home.png",
-                TargetType = typeof(MainPage)
-            });
-            menuList.Add(new MainMenuItems()
-            {
-                Title = "Stwórz listę",
-                Icon = "Createlist.png",
-                TargetType = typeof(MakeShoppingListPage)
-            });
-            menuList.Add(new MainMenuItems()
-            {
-                Title = "Zacznij zakupy",
-                Icon = "Shopping.png",
-                TargetType = typeof(MakeShoppingListPage)
-            });
-            menuList.Add(new MainMenuItems()
-            {
-                Title = "Moje listy",
-                Icon = "Lists.png",
-                TargetType = typeof(MakeShoppingListPage)
-            });
-            menuList.Add(new MainMenuItems()
-            {
-                Title = "Podsumowanie",
-                Icon = "Summary.png",
-                TargetType = typeof(MakeShoppingListPage)
-            });
-            menuList.Add(new MainMenuItems()
-            {
-                Title = "Pomoc",
-                Icon = "Help.png",
-                TargetType = typeof(MakeShoppingListPage)
-            });
-            menuList.Add(new MainMenuItems()
-            {
-                Title = "Ustawienia",
-                Icon = "Settings.png",
-                TargetType = typeof(MakeShoppingListPage)
-            });
 
+            if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+            {
+                menuListCreator = new CreateMenuListAndroidIOSStrategy();
+            }
+            else menuListCreator = new CreateMenuListUWPStrategy();
+
+            menuList = menuListCreator.CreateMenuList(menuList);
 
             // Setting our list to be ItemSource for ListView in MainPage.xaml  
             navigationDrawerList.ItemsSource = menuList;
@@ -71,6 +38,7 @@ namespace Buyshelp.Views
                 BarBackgroundColor = Color.FromRgb(18, 100, 229)
             };
         }
+
         // Event for Menu Item selection, here we are going to handle navigation based  
         // on user selection in menu ListView  
         private void OnMenuItemSelected(object sender, SelectedItemChangedEventArgs e)

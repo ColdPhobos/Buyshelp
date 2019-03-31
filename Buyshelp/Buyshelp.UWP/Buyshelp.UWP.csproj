@@ -130,7 +130,14 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="Images\Help.png" />
+    <Content Include="Images\Home.png" />
+    <Content Include="Images\Lists.png" />
     <Content Include="Images\Logo.png" />
+    <Content Include="Images\Settings.png" />
+    <Content Include="Images\Shopping.png" />
+    <Content Include="Images\Summary.png" />
+    <Content Include="Images\Createlist.png" />
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
   <ItemGroup>

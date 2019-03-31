@@ -11,7 +11,14 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid BackgroundColor="#1150b2">
-                    <Image Source="Logo.png" Aspect="AspectFill" />
+                    <Image Aspect="AspectFill" >
+                        <Image.Source>
+                            <OnPlatform x:TypeArguments="FileImageSource">
+                                <On Platform="Android, iOS" Value="Logo.png"/>
+                                <On Platform="UWP" Value="Images\Logo.png"/>
+                            </OnPlatform>
+                        </Image.Source>
+                    </Image>
                 </Grid>
                 <StackLayout 
                              Grid.Row="1"
