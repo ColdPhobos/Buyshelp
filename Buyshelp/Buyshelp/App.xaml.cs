@@ -11,8 +11,8 @@ namespace Buyshelp
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MakeShoppingListPage();
+            //MainPage = new NavigationPage(new MainPage());
+            MainPage = new MainMenu();          
         }
 
         protected override void OnStart()
