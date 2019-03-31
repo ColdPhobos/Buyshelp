@@ -25,6 +25,8 @@ namespace Buyshelp.Views
 
             ListViewProducts.ItemSelected += ListViewProducts_ItemSelected;
 
+            
+
         }
 
         private void ListViewProducts_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -45,11 +47,12 @@ namespace Buyshelp.Views
 
         }
 
-        private void Button_Clicked(Button sender, EventArgs e)
+        private async void Button_Clicked(Button sender, EventArgs e)
         {
-            DisplayAlert("fhj", sender.Text, "asf");
+            string doRemove = await DisplayActionSheet(sender.Text.ToUpper(), "Anuluj", null, "Edytuj", "Usuń");
 
-            products.Remove(sender.Text);
+            //if (doRemove == true) products.Remove(sender.Text);
+
         }
 
         private void BtnDelete_Clicked(object sender, EventArgs e)
