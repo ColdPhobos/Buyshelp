@@ -81,6 +81,7 @@
                     TextColor="White"
                     BackgroundColor="#3b5691"
                     CornerRadius="20"
+                    IsVisible="False"
                     VerticalOptions="StartAndExpand"
                     Clicked="BtnSaveList_Clicked"/>
 

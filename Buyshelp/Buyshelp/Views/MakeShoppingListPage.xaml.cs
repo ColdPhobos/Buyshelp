@@ -16,7 +16,7 @@ namespace Buyshelp.Views
 	{
         ObservableCollection<string> products;
 
-		public MakeShoppingListPage ()
+        public MakeShoppingListPage ()
 		{
 			InitializeComponent ();
 
@@ -35,7 +35,7 @@ namespace Buyshelp.Views
         }
 
         private void BtnAddProduct_Clicked(object sender, EventArgs e)
-        {
+        {      
             BtnDelete.IsVisible = false;
 
             if (!string.IsNullOrEmpty(EntryProduct.Text))
@@ -53,6 +53,8 @@ namespace Buyshelp.Views
             else
                 DisplayAlert("Błędna nazwa", "Podaj nazwę produktu!", "Ok");
 
+            if (products.Count > 0) BtnSaveList.IsVisible = true;
+            else BtnSaveList.IsVisible = false;
         }
 
         private async void Button_Clicked(Button sender, EventArgs e)
@@ -76,6 +78,7 @@ namespace Buyshelp.Views
                 default:
                     break;
             }
+ 
         }
 
         private void BtnDelete_Clicked(object sender, EventArgs e)
@@ -84,9 +87,10 @@ namespace Buyshelp.Views
             BtnDelete.IsVisible = false; 
         }
 
-        private void BtnSaveList_Clicked(object sender, EventArgs e)
+        private async void BtnSaveList_Clicked(object sender, EventArgs e)
         {
-
+            await PopupNavigation.Instance.PushAsync(new PopUpViewSaveProductList(products));
         }
+
     }
 }
